@@ -2,10 +2,8 @@ language:
     - C
 services:
     - docker
-install:
-    git clone https://github.com/JasonDyalog/unixodbc ~/unixodbc
 script:
     - echo "32-bit..."
-    - docker run --rm -i -v ~/unixodbc:/unixODBC -eBUILD_WIDTH=32 tubia/debian:wheezy /unixODBC/dbuild.sh
+    - docker run --rm -i -v ${PWD}:/unixODBC -eBUILD_WIDTH=32 tubia/debian:wheezy /unixODBC/dbuild.sh
     - echo "64-bit..."
-    - docker run --rm -i -v ~/unixodbc:/unixODBC -eBUILD_WIDTH=64 debian:wheezy /unixODBC/dbuild.sh
+    - docker run --rm -i -v ${PWD}:/unixODBC -eBUILD_WIDTH=64 debian:wheezy /unixODBC/dbuild.sh
