@@ -2,7 +2,6 @@
 
 set -e
 
-make -f Makefile.svn
 
 PLATFORM=`uname -s|tr '[A-Z]' '[a-z]'`
 CPU=`uname -m|tr '[A-Z]' '[a-z]'`
@@ -24,6 +23,12 @@ echo "*****************************************************"
 echo "**     Building for ${PLATFORM}-${CPU} (${BITS}bit)    **"
 echo "*****************************************************"
 
+if [ "darwin" = "${PLATFORM}" ]; then
+    export SED=`which gsed`
+    make -f Makefile.osx
+else
+    make -f Makefile.svn
+fi
 
 for WIDTH in ${BITS}; do
     PREFIX=${PWD}/distribution/${PLATFORM}-${CPU}-${WIDTH}
