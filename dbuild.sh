@@ -6,6 +6,8 @@ set -e
 apt-get update
 apt-get install -y build-essential automake autoconf libtool
 
+cd /unixODBC
+
 ./build.sh
 
 
