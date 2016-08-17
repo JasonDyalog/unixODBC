@@ -1,0 +1,23 @@
+LIBTOOL = glibtool
+LIBTOOLIZE = glibtoolize
+ACLOCAL = aclocal
+AUTOMAKE = automake
+AUTOHEADER = autoheader
+AUTOCONF = autoconf
+
+svn:
+	@echo "*** Retrieving configure tests needed by configure.in"
+	@$(LIBTOOLIZE) --copy --ltdl --force
+	@$(ACLOCAL) -I m4
+	@echo "*** Building Makefile templates (step one)"
+	@$(AUTOMAKE) --add-missing
+	@$(AUTOMAKE)
+	@echo "*** Building config.h"
+	@$(AUTOHEADER)
+	@echo "*** Building configure"
+	@$(AUTOCONF)
+	@echo "*** Finished"
+	@echo "    Don't forget to run ./configure"
+	@echo "    If you haven't done so in a while, run ./configure --help"
+
+
