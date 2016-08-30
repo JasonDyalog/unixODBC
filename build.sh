@@ -47,7 +47,7 @@ for WIDTH in ${BITS}; do
         exit 1
     fi
 
-    ./configure --prefix=${PREFIX} --enable-drivers --enable-driver-conf --sysconfdir=/etc
+    ./configure --prefix=${PREFIX} --enable-drivers --enable-driver-conf --sysconfdir=/etc --with-included-ltdl
     make
     make install
     make clean
